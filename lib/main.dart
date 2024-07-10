@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_review_app/screens/home/home_screen.dart';
+import 'package:movie_review_app/screens/dashboard.dart';
 import 'package:movie_review_app/providers/home_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Movie Review',
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true),
-        home: const HomePage());
+        home: const Dashboard());
   }
 }
