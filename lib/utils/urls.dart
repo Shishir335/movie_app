@@ -12,6 +12,9 @@ class Urls {
   static String movieSearch = 'https://api.themoviedb.org/3/search/movie?$apiKey';
   static String tvSearch = 'https://api.themoviedb.org/3/search/tv?$apiKey';
 
+  static String movieDetails = 'https://api.themoviedb.org/3/movie/';
+  static String tvSeriesDetails = 'https://api.themoviedb.org/3/tv/';
+
   static String posterPath = 'http://image.tmdb.org/t/p/w185';
 
 }

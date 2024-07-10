@@ -5,6 +5,7 @@ class AppConfigurations {
   static Color backgroundColor = const Color(0xff16131e);
   static Color foregroundColor = Colors.white;
   static Color hint = Colors.grey;
+  static Color iconColor = Colors.grey;
 
   // textStyles
   static TextStyle title = const TextStyle(
