@@ -6,6 +6,7 @@ import 'package:movie_review_app/screens/profile.dart';
 import 'package:movie_review_app/utils/app_config.dart';
 
 class Dashboard extends StatefulWidget {
+  static const routeName = 'Dashboard';
   const Dashboard({super.key});
 
   @override
