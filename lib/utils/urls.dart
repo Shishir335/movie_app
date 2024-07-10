@@ -9,6 +9,9 @@ class Urls {
   static String topRatedTvSeries = 'https://api.themoviedb.org/3/tv/top_rated?$apiKey';
   static String popularTvSeries = 'https://api.themoviedb.org/3/tv/popular?$apiKey';
 
+  static String movieSearch = 'https://api.themoviedb.org/3/search/movie?$apiKey';
+  static String tvSearch = 'https://api.themoviedb.org/3/search/tv?$apiKey';
+
   static String posterPath = 'http://image.tmdb.org/t/p/w185';
 
 }
