@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_review_app/components/components.dart';
-import 'package:movie_review_app/screens/home_components/categories.dart';
-import 'package:movie_review_app/screens/home_components/movie_list.dart';
-import 'package:movie_review_app/screens/home_components/search_text_field.dart';
+import 'package:movie_review_app/screens/home/home_components/categories.dart';
+import 'package:movie_review_app/screens/home/home_components/movie_list.dart';
+import 'package:movie_review_app/screens/home/home_components/search_text_field.dart';
 import 'package:movie_review_app/providers/home_provider.dart';
 import 'package:movie_review_app/utils/app_config.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                     Text('Find Movies, Tv series, \nand more..',
                         style: AppConfigurations.headline),
                     verticalGap(),
-                    const SearchTextField(),
+                    SearchTextField(provider: provider),
                     verticalGap(15),
                     Categories(provider: provider),
                     verticalGap(15),

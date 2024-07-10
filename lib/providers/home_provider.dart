@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:movie_review_app/api_service/api_service.dart';
 import 'package:movie_review_app/models/movie_response.dart';
@@ -111,5 +113,56 @@ class HomeProvider extends ChangeNotifier {
       _topRatedTVSeries = response.results!;
     });
     notifyListeners();
+  }
+
+  // movie Search
+  List<Movie> _movieSearch = [];
+  List<Movie> get movieSearch => _movieSearch;
+
+  getMovieSearch(String name) async {
+    await HttpHelper.get('${Urls.movieSearch}&query=$name').then((value) {
+      MovieResponse response = MovieResponse.fromJson(value.response);
+      _movieSearch = response.results!;
+    });
+    notifyListeners();
+  }
+
+  // movie Search
+  List<TVSeries> _tvSearch = [];
+  List<TVSeries> get tvSearch => _tvSearch;
+
+  getTVSearch(String name) async {
+    await HttpHelper.get('${Urls.tvSearch}&query=$name').then((value) {
+      TVSeriesResponse response = TVSeriesResponse.fromJson(value.response);
+      _tvSearch = response.results!;
+    });
+    notifyListeners();
+  }
+
+  // search
+
+  TextEditingController search = TextEditingController();
+
+  Timer? _debounceTimer;
+
+  void getSearch(String value) {
+    if (_debounceTimer != null) {
+      _debounceTimer!.cancel();
+    }
+
+    _debounceTimer = Timer(const Duration(milliseconds: 800), () {
+      print(value);
+      if (['Movies', 'Popular Movies', 'Top-rated Movies']
+          .contains(_selectedCategoryNames)) {
+        getMovieSearch(value);
+      } else {
+        getTVSearch(value);
+      }
+      cancelTimer();
+    });
+  }
+
+  cancelTimer() {
+    _debounceTimer!.cancel();
   }
 }
