@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_review_app/components/components.dart';
 import 'package:movie_review_app/components/loader.dart';
 import 'package:movie_review_app/providers/details_provider.dart';
-import 'package:movie_review_app/screens/details/recommanded_card.dart';
+import 'package:movie_review_app/screens/details/recommended_card.dart';
 import 'package:movie_review_app/utils/app_config.dart';
 import 'package:movie_review_app/utils/navigator.dart';
 import 'package:movie_review_app/utils/urls.dart';
