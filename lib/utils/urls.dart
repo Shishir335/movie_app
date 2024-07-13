@@ -15,6 +15,14 @@ class Urls {
   static String movieDetails = 'https://api.themoviedb.org/3/movie/';
   static String tvSeriesDetails = 'https://api.themoviedb.org/3/tv/';
 
+  static String getRelatedMoviesUrl(String id) {
+    return 'https://api.themoviedb.org/3/movie/$id/recommendations?$apiKey';
+  }
+
+  static String getRelatedSeriesUrl(String id) {
+    return 'https://api.themoviedb.org/3/tv/$id/recommendations?$apiKey';
+  }
+
   static String posterPath = 'http://image.tmdb.org/t/p/w185';
 
 }
