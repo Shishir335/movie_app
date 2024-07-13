@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_review_app/components/components.dart';
 import 'package:movie_review_app/components/loader.dart';
 import 'package:movie_review_app/providers/details_provider.dart';
+import 'package:movie_review_app/screens/details/recommended_card.dart';
 import 'package:movie_review_app/utils/app_config.dart';
 import 'package:movie_review_app/utils/navigator.dart';
 import 'package:movie_review_app/utils/urls.dart';
@@ -22,9 +22,11 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   @override
   void initState() {
     final provider = Provider.of<DetailsProvider>(context, listen: false);
-    provider.setMovieDetailsNull();
+    provider.reset();
     Future.delayed(const Duration(milliseconds: 200), () {
-      provider.getMovieDetails(Nav.getArguments(context)['id']);
+      provider.getMovieDetails(Nav.getArguments(context)['id']).then((value) {
+        provider.getRelatedMovies();
+      });
     });
     super.initState();
   }
@@ -152,12 +154,27 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                                     overflow: TextOverflow.ellipsis),
                                 if (provider.seeMore == false)
                                   GestureDetector(
-                                    onTap: () {
-                                      provider.changeSeeMore(true);
-                                    },
-                                    child: Text('Read more..',
-                                        style: AppConfigurations.subtitle),
-                                  ),
+                                      onTap: () {
+                                        provider.changeSeeMore(true);
+                                      },
+                                      child: Text('Read more..',
+                                          style: AppConfigurations.subtitle)),
+
+                                verticalGap(40),
+                                // related movies
+                                Text('Related Movies',
+                                    style: AppConfigurations.title),
+                                verticalGap(20),
+                                SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          for (var item
+                                              in provider.relatedMovies)
+                                            RecommendedCard(details: item)
+                                        ]))
                               ]),
                         ),
                       ]),

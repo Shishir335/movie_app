@@ -5,8 +5,9 @@ class Nav {
     Navigator.of(context).pushNamed(routeName, arguments: arguments);
   }
 
-  static pushAndReplace(BuildContext context, String routeName) {
-    Navigator.of(context).pushReplacementNamed(routeName);
+  static pushAndReplace(BuildContext context, String routeName,
+      {dynamic arguments}) {
+    Navigator.of(context).pushReplacementNamed(routeName, arguments: arguments);
   }
 
   static pushAndRemoveAll(BuildContext context, String routeName,
